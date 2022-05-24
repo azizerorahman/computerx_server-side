@@ -53,6 +53,14 @@ async function run() {
       });
       res.send({ result, token });
     });
+
+    // load user data by email
+    app.get("/user/:email", async (req, res) => {
+      const email = req.params.email;
+      const query = { email: email };
+      const dbUser = await userCollection.findOne(query);
+      res.send(dbUser);
+    });
   } finally {
     // await client.close();
   }
