@@ -36,6 +36,7 @@ async function run() {
     await client.connect();
     const partsCollection = client.db("Computerx").collection("parts");
     const userCollection = client.db("Computerx").collection("user");
+    const reviewsCollection = client.db("Computerx").collection("reviews");
 
     // load all parts
     app.get("/parts", async (req, res) => {
@@ -93,6 +94,14 @@ async function run() {
       };
       const result = await userCollection.updateOne(filter, updateDoc, options);
       res.send(result);
+    });
+
+    // load all reviews
+    app.get("/reviews", async (req, res) => {
+      const query = {};
+      const cursor = reviewsCollection.find(query);
+      const reviews = await cursor.toArray();
+      res.send(reviews);
     });
   } finally {
     // await client.close();
