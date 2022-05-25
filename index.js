@@ -103,6 +103,13 @@ async function run() {
       const reviews = await cursor.toArray();
       res.send(reviews);
     });
+
+    // add new review
+    app.post("/reviews", verifyJWT, async (req, res) => {
+      const reviews = req.body;
+      const result = await reviewsCollection.insertOne(reviews);
+      res.send(result);
+    });
   } finally {
     // await client.close();
   }
