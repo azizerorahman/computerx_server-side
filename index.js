@@ -37,6 +37,7 @@ async function run() {
     const partsCollection = client.db("Computerx").collection("parts");
     const userCollection = client.db("Computerx").collection("user");
     const reviewsCollection = client.db("Computerx").collection("reviews");
+    const ordersCollection = client.db("Computerx").collection("orders");
 
     // load all parts
     app.get("/parts", async (req, res) => {
@@ -108,6 +109,13 @@ async function run() {
     app.post("/reviews", verifyJWT, async (req, res) => {
       const reviews = req.body;
       const result = await reviewsCollection.insertOne(reviews);
+      res.send(result);
+    });
+
+    // add user order
+    app.post("/orders", verifyJWT, async (req, res) => {
+      const order = req.body;
+      const result = await ordersCollection.insertOne(order);
       res.send(result);
     });
   } finally {
