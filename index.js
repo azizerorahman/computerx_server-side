@@ -90,6 +90,14 @@ async function run() {
       res.send(result);
     });
 
+    // delete a part
+    app.delete("/parts/:id", verifyJWT, verifyAdmin, async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const result = await partsCollection.deleteOne(query);
+      res.send(result);
+    });
+
     // load all users
     app.get("/user", verifyJWT, async (req, res) => {
       const users = await userCollection.find().toArray();
