@@ -98,6 +98,19 @@ async function run() {
       res.send(result);
     });
 
+    //update a part
+    app.put("/parts/:id", verifyJWT, async (req, res) => {
+      const id = req.params.id;
+      const updatedPart = req.body;
+      const updatedQuantity = updatedPart.quantity;
+      const filter = { _id: ObjectId(id) };
+      const updateDoc = {
+        $set: { quantity: updatedQuantity },
+      };
+      const result = await partsCollection.updateOne(filter, updateDoc);
+      res.send(result);
+    });
+
     // load all users
     app.get("/user", verifyJWT, async (req, res) => {
       const users = await userCollection.find().toArray();
@@ -173,14 +186,6 @@ async function run() {
       res.send(reviews);
     });
 
-    // load order data by id
-    app.get("/payment/order/:id", async (req, res) => {
-      const id = req.params.id;
-      const query = { _id: ObjectId(id) };
-      const order = await ordersCollection.findOne(query);
-      res.send(order);
-    });
-
     // add new review
     app.post("/reviews", verifyJWT, async (req, res) => {
       const reviews = req.body;
@@ -194,6 +199,14 @@ async function run() {
       const cursor = ordersCollection.find(query);
       const orders = await cursor.toArray();
       res.send(orders);
+    });
+
+    // load order data by id
+    app.get("/payment/order/:id", verifyJWT, async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const order = await ordersCollection.findOne(query);
+      res.send(order);
     });
 
     // add user order
