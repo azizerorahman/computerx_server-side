@@ -173,6 +173,14 @@ async function run() {
       res.send(reviews);
     });
 
+    // load order data by id
+    app.get("/payment/order/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const order = await ordersCollection.findOne(query);
+      res.send(order);
+    });
+
     // add new review
     app.post("/reviews", verifyJWT, async (req, res) => {
       const reviews = req.body;
@@ -195,7 +203,7 @@ async function run() {
       res.send(result);
     });
 
-    // load orders data by email
+    // load orders by email
     app.get("/orders/:email", verifyJWT, async (req, res) => {
       const email = req.params.email;
       const decodedEmail = req.decoded.email;
@@ -207,14 +215,6 @@ async function run() {
       } else {
         return res.status(403).send({ message: "Forbidden Access" });
       }
-    });
-
-    // load order data by id
-    app.get("/orders/:id", verifyJWT, async (req, res) => {
-      const id = req.params.id;
-      const query = { _id: ObjectId(id) };
-      const order = await ordersCollection.findOne(query);
-      res.send(order);
     });
 
     // update order data
