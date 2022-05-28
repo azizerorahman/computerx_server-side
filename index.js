@@ -237,7 +237,7 @@ async function run() {
       const filter = { _id: ObjectId(id) };
       const updatedDoc = {
         $set: {
-          paid: true,
+          status: "pending",
           transactionId: payment.transactionId,
         },
       };
@@ -245,6 +245,19 @@ async function run() {
       const result = await paymentCollection.insertOne(payment);
       const updatedOrder = await ordersCollection.updateOne(filter, updatedDoc);
       res.send(updatedOrder);
+    });
+
+    // update shipped data
+    app.patch("/shipped/:id", verifyJWT, async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: ObjectId(id) };
+      const updatedDoc = {
+        $set: {
+          status: "shipped",
+        },
+      };
+      const shippedOrder = await ordersCollection.updateOne(filter, updatedDoc);
+      res.send(shippedOrder);
     });
 
     // delete order
