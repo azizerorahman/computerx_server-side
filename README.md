@@ -1,6 +1,6 @@
 # ComputerX Server Side
 
-![Computerx API](https://img.shields.io/badge/Computerx-API-blue)
+![ComputerX API](https://img.shields.io/badge/Computerx-API-blue)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4.4+-green)
 ![Express](https://img.shields.io/badge/Express-4.18+-orange)
 ![Node.js](https://img.shields.io/badge/Node.js-14+-brightgreen)
@@ -9,9 +9,9 @@ A robust backend API for the Computerx computer parts manufacturer management sy
 
 ## Important Links
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit_Site-2ea44f?style=for-the-badge&logo=vercel)](https://computerx-zero.web.app/)
-[![Client Repository](https://img.shields.io/badge/Client_Code-GitHub-blue?style=for-the-badge&logo=github)](https://github.com/azizurrahman-zero/computerx_client-side)
-[![Server Repository](https://img.shields.io/badge/Server_Code-GitHub-blue?style=for-the-badge&logo=github)](https://github.com/azizurrahman-zero/computerx_server-side)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit_Site-2ea44f?style=for-the-badge&logo=vercel)](https://computerx-0.netlify.app/)
+[![Client Repository](https://img.shields.io/badge/Client_Code-GitHub-blue?style=for-the-badge&logo=github)](https://github.com/azizerorahman/computerx_client-side)
+[![Server Repository](https://img.shields.io/badge/Server_Code-GitHub-blue?style=for-the-badge&logo=github)](https://github.com/azizerorahman/computerx_server-side)
 
 ## Table of Contents
 
@@ -58,7 +58,7 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/azizurrahman-zero/computerx_server-side.git
+   git clone https://github.com/azizerorahman/computerx_server-side.git
    cd computerx_server-side
    ```
 
