@@ -5,7 +5,7 @@
 ![Express](https://img.shields.io/badge/Express-4.18+-orange)
 ![Node.js](https://img.shields.io/badge/Node.js-14+-brightgreen)
 
-A robust backend API for the Computerx computer parts manufacturer management system. This server provides secure endpoints for managing computer parts inventory, user authentication, order processing, and payment integration with JWT-based security and MongoDB integration.
+Backend of the Computerx - computer parts manufacturer management system. This server provides secure endpoints for managing computer parts inventory, user authentication, order processing, and payment integration with JWT-based security and MongoDB integration.
 
 ## Important Links
 
